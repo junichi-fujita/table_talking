@@ -23,19 +23,19 @@ Ruby 2.6.5 Rails 5.2.4
 
 ## カタログ設計
 
-https://docs.google.com/spreadsheets/d/1ZyubtUz-qVw1CYqbxUUL9FETknzRzoAxsMO3NByni74/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTBieHKcDDdRXcXg3No_EgI_i9bFz-BaAxRqzMTMV54aXPQz9GA46iPRJYy2DKBsI-lBbgNVxFokSgB/pubhtml
 
 ## テーブル定義
 
-https://docs.google.com/spreadsheets/d/1IWeE25J3o-hL3kakdByN2cuH1q5OhXTHVts4A0xiwK0/edit#gid=1680973583
+https://docs.google.com/spreadsheets/d/e/2PACX-1vS7waI0Gq8nHp4zkKJZItcIB-snRpm0AxSxALyW66qBJ3eGOdGqUgmFFRrh-FY9bz9iNo9QJ129evuS/pubhtml
 
 ## 画面遷移図
 
-https://docs.google.com/spreadsheets/d/1rpVDSXf6egwQ-xTgooCDJMEVz8B8w1GwazihdAf2arw/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vQvOtj9-UkgQT4FhlH1V4KVSklyASufpcFOt9mI-v62eYTJBEZ_vgapv-2PXagioGK4S0RcpLPr3Xcm/pubhtml
 
 ## 画面ワイヤーフレーム
 
-https://docs.google.com/spreadsheets/d/1z-lX7Ee8FKzxYLbDbfYv46j4YZN3qIe07gAhQwqEijs/edit#gid=0
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRdb_A3Up5TNhOmNOdjRxGt8d53dJEvPepHrUTW_vxFQn12xJcSsy1eYslw45cnr7jeTip7sFFEG_uI/pubhtml
 
 ## 使用予定Gem
 
