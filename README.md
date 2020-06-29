@@ -31,15 +31,15 @@ https://docs.google.com/spreadsheets/d/1IWeE25J3o-hL3kakdByN2cuH1q5OhXTHVts4A0xi
 
 ## 画面遷移図
 
-https://docs.google.com/spreadsheets/d/1rpVDSXf6egwQ-xTgooCDJMEVz8B8w1GwazihdAf2arw/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/14xXILEeepGtwzWDTiZ-Lv9HQaJF6otxa_btcQrBLw4Y/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
 
-https://docs.google.com/spreadsheets/d/1z-lX7Ee8FKzxYLbDbfYv46j4YZN3qIe07gAhQwqEijs/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1YG_qV8kyv-XzchpYNUgNImIDZ2pD-8BqJecn2T-yOHg/edit?usp=sharing
 
 ## ER図
 
-https://docs.google.com/spreadsheets/d/1xpm9dTLXGDACyN2CMFgIAiGliYsJitPA0yvsuOFY0-4/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1G18Idm1aeKUWms4ZbgOnydAlTu3P2WOiYTh-TFMqfN0/edit?usp=sharing
 
 ## 使用予定Gem
 
