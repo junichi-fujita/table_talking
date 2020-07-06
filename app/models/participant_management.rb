@@ -1,0 +1,2 @@
+class ParticipantManagement < ApplicationRecord
+end
