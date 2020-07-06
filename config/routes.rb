@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root 'home#index'
+  resources :recruitments
 end
