@@ -37,7 +37,8 @@ class RecruitmentsController < ApplicationController
   end
 
   def destroy
-
+    @recruitment.destroy
+    redirect_to :recruitments, notice: "募集内容を削除しました。"
   end
 
   private
