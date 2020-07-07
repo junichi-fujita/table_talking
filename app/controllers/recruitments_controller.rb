@@ -16,7 +16,7 @@ class RecruitmentsController < ApplicationController
     @recruitment = Recruitment.new(recruitment_paramas)
     # master_nameをcurrent_userに変更する予定
     @recruitment.assign_attributes(master_name: "yamada")
-    if @recruitment.save
+    if @recruitment.save!
       redirect_to @recruitment, notice: "募集内容を登録しました。"
     else
       render :new
@@ -28,7 +28,12 @@ class RecruitmentsController < ApplicationController
   end
 
   def update
-
+    @recruitment.assign_attributes(recruitment_paramas)
+    if @recruitment.save!
+      redirect_to @recruitment, notice: "募集内容を編集しました。"
+    else
+      render :new
+    end
   end
 
   def destroy
