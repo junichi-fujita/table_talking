@@ -15,7 +15,7 @@ class RecruitmentsController < ApplicationController
   def create
     @recruitment = Recruitment.new(recruitment_paramas)
     # master_nameをcurrent_userに変更する予定
-    @recruitment.assign_attributes(master_name: "yamada")
+    @recruitment.assign_attributes(master_name: current_user.name)
     if @recruitment.save!
       redirect_to @recruitment, notice: "募集内容を登録しました。"
     else
