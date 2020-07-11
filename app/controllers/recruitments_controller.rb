@@ -5,7 +5,8 @@ class RecruitmentsController < ApplicationController
   end
 
   def show
-
+    @participants = current_user
+    @pm = ParticipantManagement.new
   end
 
   def new
@@ -13,6 +14,8 @@ class RecruitmentsController < ApplicationController
   end
 
   def create
+    @participants = current_user
+    @pm = ParticipantManagement.new
     @recruitment = Recruitment.new(recruitment_paramas)
     # master_nameをcurrent_userに変更する予定
     @recruitment.assign_attributes(master_name: current_user.name)
