@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_065556) do
     t.bigint "user_id", null: false
     t.bigint "recruitment_id", null: false
     t.boolean "acceptance", default: false, null: false
+    t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recruitment_id"], name: "index_participant_managements_on_recruitment_id"
@@ -50,4 +51,6 @@ ActiveRecord::Schema.define(version: 2020_07_06_065556) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "participant_managements", "recruitments"
+  add_foreign_key "participant_managements", "users"
 end
