@@ -8,6 +8,7 @@ class SubscriptionsController < ApplicationController
     # pm.recruitment_id = recruitment.id
     # @recruitment = recruitment.participant_managements
     recruitment = Recruitment.new
+    @recruitment = recruitment.participant_managements
   end
 
   def create
@@ -37,6 +38,7 @@ class SubscriptionsController < ApplicationController
 
   def set_subscription
     recruitment = Recruitment.find(params[:recruitment_id])
-    @subscription = recruitment.participant_managements.find(params[:id])
+    @recuitment = recruitment.participant_managements.find_by(user_id: params[:id])
+    raise
   end
 end

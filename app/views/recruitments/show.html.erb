@@ -46,7 +46,7 @@
     <% if (params[:id]).to_i == recruitment.participant_managements.first.recruitment_id %>
         <td><%= recruitment.users.first.name %></td>
         <td><%= recruitment.participant_managements.last.comment %></td>
-        <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment) %></td>
+        <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment.participant_managements, id: recruitment.participant_managements.last.user_id) %></td>
       <% end %>
     </tr>
   <% end %>

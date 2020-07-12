@@ -1,5 +1,6 @@
 class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: %i[show edit update destroy]
+  
   def index
     @recruitments = Recruitment.order(id: :desc)
   end
@@ -9,7 +10,6 @@ class RecruitmentsController < ApplicationController
     # @name = subscription.users.first.name
     # @comment = subscription.participant_managements.first.comment
     @recruitments = Recruitment.order(id: :desc)
-    @current_recruitment = (params[:id]).to_i
   end
 
   def new
