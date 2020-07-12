@@ -1,6 +1,6 @@
 <h1>募集に応募する </h1>
 
-<%= form_with(model: @recruitment, url: comment_create_recruitment_path, local: true)do |form| %>
+<%= form_with(model: @recruitment, url: recruitment_subscriptions_path, local: true)do |form| %>
   <%#= binding.pry %>
   <%= form.text_area :comment %>
   <%= form.submit "応募する" %>

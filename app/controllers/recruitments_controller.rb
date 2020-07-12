@@ -43,22 +43,22 @@ class RecruitmentsController < ApplicationController
     redirect_to :recruitments, notice: "募集内容を削除しました。"
   end
 
-  def comment_new
-    recruitment = Recruitment.new
-    @recruitment = recruitment.participant_managements
-  end
+  # def comment_new
+  #   recruitment = Recruitment.new
+  #   @recruitment = recruitment.participant_managements
+  # end
 
-  def comment_create
-    subscription = Recruitment.find(params[:id])
-    pm = ParticipantManagement.new(subscription_params)
-    pm.assign_attributes(user_id: current_user.id)
-    subscription.participant_managements << pm
-    if subscription.save!
-      redirect_to recruitments_url
-    else
-      render :comment_new
-    end
-  end
+  # def comment_create
+  #   subscription = Recruitment.find(params[:id])
+  #   pm = ParticipantManagement.new(subscription_params)
+  #   pm.assign_attributes(user_id: current_user.id)
+  #   subscription.participant_managements << pm
+  #   if subscription.save!
+  #     redirect_to recruitments_url
+  #   else
+  #     render :comment_new
+  #   end
+  # end
 
   private
 
@@ -77,10 +77,10 @@ class RecruitmentsController < ApplicationController
     )
   end
 
-  def subscription_params
-    params.require(:participant_management).permit(
-      :comment,
-      :recruitment_id,
-    )
-  end
+  # def subscription_params
+  #   params.require(:participant_management).permit(
+  #     :comment,
+  #     :recruitment_id,
+  #   )
+  # end
 end

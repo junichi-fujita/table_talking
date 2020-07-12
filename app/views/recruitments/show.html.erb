@@ -7,7 +7,7 @@
   </div>
 <% else %>
   <div class="d-flex justify-content-end">
-    <%= link_to "応募する", comment_new_recruitments_path(@recruitment), class: "btn btn-primary" %>
+    <%= link_to "応募する", new_recruitment_subscription_path(@recruitment), class: "btn btn-primary" %>
   </div>
 <% end %>
 
@@ -42,7 +42,10 @@
   </tr>
   <% @recruitments.each do |subscription| %>
     <tr>
-      <td><%= subscription.users.pluck(:name)[0] %></td>
-      <td><%= subscription.participant_managements.pluck(:comment)[0] %></td>
+      <% if subscription.users.first.name %>
+        <td><%= subscription.users.first.name %></td>
+      <% end %>
+
+      <td><%= subscription.participant_managements.last.comment %></td>
     </tr>
   <% end %>

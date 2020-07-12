@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   }
   root 'home#index'
   resources :recruitments do
-    get "comment_new", on: :collection
-    post "comment_create", on: :collection
+    resources :subscriptions
   end
 end

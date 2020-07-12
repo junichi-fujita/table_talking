@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    subscription = Recruitment.find(params[:id])
+    subscription = Recruitment.find(params[:recruitment_id])
     @pm = ParticipantManagement.new(subscription_params)
     @pm.assign_attributes(user_id: current_user.id)
     subscription.participant_managements << @pm
