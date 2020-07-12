@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  before_action :set_subscription, only: %i[edit]
 
   def new
     # @recruitment = Recruitment.find(params[:recruitment_id])
@@ -7,7 +8,6 @@ class SubscriptionsController < ApplicationController
     # pm.recruitment_id = recruitment.id
     # @recruitment = recruitment.participant_managements
     recruitment = Recruitment.new
-    @recruitment = recruitment.participant_managements
   end
 
   def create
@@ -19,7 +19,11 @@ class SubscriptionsController < ApplicationController
       redirect_to recruitments_url
     else
       render :new
-    end    
+    end
+  end
+
+  def edit
+
   end
 
   private
@@ -29,5 +33,10 @@ class SubscriptionsController < ApplicationController
       :comment,
       :recruitment_id,
     )
+  end
+
+  def set_subscription
+    recruitment = Recruitment.find(params[:recruitment_id])
+    @subscription = recruitment.participant_managements.find(params[:id])
   end
 end

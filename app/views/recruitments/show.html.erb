@@ -39,13 +39,14 @@
   <tr>
     <th>ユーザー名</th>
     <th>コメント</th>
+    <th></th>
   </tr>
-  <% @recruitments.each do |subscription| %>
+  <% @recruitments.each do |recruitment| %>
     <tr>
-      <% if subscription.users.first.name %>
-        <td><%= subscription.users.first.name %></td>
+    <% if (params[:id]).to_i == recruitment.participant_managements.first.recruitment_id %>
+        <td><%= recruitment.users.first.name %></td>
+        <td><%= recruitment.participant_managements.last.comment %></td>
+        <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment) %></td>
       <% end %>
-
-      <td><%= subscription.participant_managements.last.comment %></td>
     </tr>
   <% end %>

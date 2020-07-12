@@ -9,6 +9,7 @@ class RecruitmentsController < ApplicationController
     # @name = subscription.users.first.name
     # @comment = subscription.participant_managements.first.comment
     @recruitments = Recruitment.order(id: :desc)
+    @current_recruitment = (params[:id]).to_i
   end
 
   def new
