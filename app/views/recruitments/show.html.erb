@@ -7,7 +7,8 @@
   </div>
 <% else %>
   <%#= binding.pry %>
-  <% unless current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || @recruitment.master_name.in?(@recruitment.users.pluck(:name)) %>
+  <% if current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || current_user.name.in?(@recruitment.users.pluck(:name)) %>
+  <% else %>
     <div class="d-flex justify-content-end">
       <%= link_to "応募する", new_recruitment_subscription_path(@recruitment), class: "btn btn-primary" %>
     </div>
@@ -47,12 +48,14 @@
   </tr>
   <% @recruitments.each do |recruitment| %>
     <tr>
-    <% if (params[:id]).to_i == recruitment.participant_managements.first.recruitment_id %>
+    <% if (params[:id]).to_i == recruitment.participant_managements.first&.recruitment_id %>
       <% recruitment.participant_managements.each do |pm| %>
         <td><%= pm.user.name %></td>
         <td><%= pm.comment %></td>
-        <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment, pm) %></td>
-        <td><%= link_to "削除", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
+        <% if current_user.id == pm.user_id%>
+          <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment, pm) %></td>
+          <td><%= link_to "応募の取消", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
+        <% end %>
       <% end %>
     <% end %>
     </tr>

@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
     pm.assign_attributes(user_id: current_user.id)
     subscription.participant_managements << pm
     if subscription.save!
-      redirect_to recruitments_url
+      redirect_to recruitment_url(subscription)
     else
       render :new
     end
