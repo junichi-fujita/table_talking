@@ -6,9 +6,12 @@
     <%= link_to '削除', recruitment_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
   </div>
 <% else %>
-  <div class="d-flex justify-content-end">
-    <%= link_to "応募する", new_recruitment_subscription_path(@recruitment), class: "btn btn-primary" %>
-  </div>
+  <%#= binding.pry %>
+  <% unless current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || @recruitment.master_name.in?(@recruitment.users.pluck(:name)) %>
+    <div class="d-flex justify-content-end">
+      <%= link_to "応募する", new_recruitment_subscription_path(@recruitment), class: "btn btn-primary" %>
+    </div>
+  <% end %>
 <% end %>
 
 
@@ -40,9 +43,9 @@
     <th>ユーザー名</th>
     <th>コメント</th>
     <th></th>
+    <th></th>
   </tr>
   <% @recruitments.each do |recruitment| %>
-    <%# binding.pry %>
     <tr>
     <% if (params[:id]).to_i == recruitment.participant_managements.first.recruitment_id %>
       <% recruitment.participant_managements.each do |pm| %>

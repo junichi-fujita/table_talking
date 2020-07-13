@@ -7,7 +7,7 @@ if Rails.env == "development"
       appropriate_level: "#{i}",
       start_time: "2020-07-6",
       play_time: "#{i}",
-      master_name: "master#{i}",
+      master_name: "user#{i}",
     )
   end
 
