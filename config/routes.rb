@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   }
   root 'home#index'
   resources :recruitments do
-    resources :subscriptions
+    resources :subscriptions do
+      patch "accept", on: :member
+      patch "reject", on: :member
+    end
   end
 end
