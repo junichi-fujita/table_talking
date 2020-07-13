@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: %i[edit update]
+  before_action :set_subscription, only: %i[edit update destroy]
 
   def new
     @recruitment = Recruitment.new
@@ -28,6 +28,11 @@ class SubscriptionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @subscription.destroy
+    redirect_to @recruitment, notice: "コメントを削除しました"
   end
 
   private

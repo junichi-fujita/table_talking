@@ -49,6 +49,7 @@
         <td><%= pm.user.name %></td>
         <td><%= pm.comment %></td>
         <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment, pm) %></td>
+        <td><%= link_to "削除", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
       <% end %>
     <% end %>
     </tr>
