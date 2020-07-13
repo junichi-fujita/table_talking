@@ -2,11 +2,6 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: %i[edit]
 
   def new
-    # @recruitment = Recruitment.find(params[:recruitment_id])
-    # pm = ParticipantManagement.new
-    # pm.user_id = current_user.id
-    # pm.recruitment_id = recruitment.id
-    # @recruitment = recruitment.participant_managements
     recruitment = Recruitment.new
     @recruitment = recruitment.participant_managements
   end
@@ -24,7 +19,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    
   end
 
   private
@@ -38,7 +36,6 @@ class SubscriptionsController < ApplicationController
 
   def set_subscription
     recruitment = Recruitment.find(params[:recruitment_id])
-    @recuitment = recruitment.participant_managements.find_by(user_id: params[:id])
-    raise
+    @recruitment = recruitment.participant_managements.find(params[:id])
   end
 end
