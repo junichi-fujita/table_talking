@@ -57,6 +57,7 @@
           <td><%= link_to "応募の取消", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
         <% end %>
         <% if game_master? %>
+          <%#= binding.pry %>
           <% if pm.acceptance == false %>
             <td><%= link_to "承認", accept_recruitment_subscription_path(recruitment, pm), method: :patch %></td>
           <% else %>

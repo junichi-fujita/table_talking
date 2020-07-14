@@ -1,0 +1,39 @@
+<h1>マイアカウント</h1>
+
+
+<table class="table">
+  <tr>
+    <th>プレイヤー名</th>
+    <th><%= @user.name %></th>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <th><%= @user.email %></th>
+  </tr>
+</table>
+
+<h2>募集に応募しているプレイヤー</h2>
+<% @recruitments.each do |recruitment| %>
+  <% if recruitment.master_name == current_user.name%>
+    <% recruitment.participant_managements.each do |pm|%>
+      <% if recruitment.id == pm.application %>
+        <%= pm.user.name %>
+        <%= pm.comment %>
+        <%#= binding.pry %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<h2>応募したイベント</h2>
+<% @recruitments.each do |recruitment| %>
+  <% recruitment.participant_managements.each do |pm| %>
+    <% if current_user.id == pm.user_id %>
+      <%= recruitment.title %>
+      <%= recruitment.content %>
+      <%= recruitment.master_name %>
+    <% end %>
+  <% end %>
+<% end %>
+

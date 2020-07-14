@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  resources :users, only: %i[show]
   root 'home#index'
   resources :recruitments do
     resources :subscriptions do
