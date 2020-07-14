@@ -1,0 +1,23 @@
+
+  <table class="table">
+      <tr>
+        <th><%= form.label :title %></th>
+        <td> <%= form.text_field :title %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :content %></th>
+        <td><%= form.text_area :content %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :appropriate_level %></th>
+        <td><%= form.number_field :appropriate_level %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :start_time %></th>
+        <td><%= form.datetime_field :start_time %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :play_time %></th>
+        <td><%= form.number_field :play_time %></td>
+      </tr>
+    </table>

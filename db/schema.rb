@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_065629) do
+ActiveRecord::Schema.define(version: 2020_07_06_065556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "participant_managements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recruitment_id", null: false
+    t.boolean "acceptance", default: false, null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recruitment_id"], name: "index_participant_managements_on_recruitment_id"
+    t.index ["user_id"], name: "index_participant_managements_on_user_id"
+  end
+
+  create_table "recruitments", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.integer "appropriate_level", null: false
+    t.string "master_name", null: false
+    t.datetime "start_time", null: false
+    t.integer "play_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false

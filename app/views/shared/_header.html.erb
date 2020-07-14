@@ -1,11 +1,11 @@
 <div class="d-flex justify-content-between align-items-center">
   <div>
-    <h1>Table Talking</h1>
+    <%= link_to "Table Talking", recruitments_path, class: "h1" %>
   </div>
   <div>
     <% if user_signed_in? %>
-      <strong><%= link_to current_user.username, pages_show_path %></strong>
-      <%= link_to 'プロフィール変更', edit_user_registration_path %>
+      <strong><%#= link_to current_user.name, pages_show_path %></strong>
+      <%= link_to 'アカウント情報', edit_user_registration_path %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to 'サインアップ', new_user_registration_path %>

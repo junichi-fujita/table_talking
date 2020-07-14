@@ -1,0 +1,6 @@
+<h1>募集内容の新規作成</h1>
+
+<%= form_with(model: @recruitment, local: true) do |form| %>
+  <%= render "form", form: form %>
+  <%= form.submit %>
+<% end %>

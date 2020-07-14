@@ -1,0 +1,27 @@
+<h1>プレイのマッチング</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>募集名</th>
+      <th>適正レベル</th>
+      <th>開始時間</th>
+      <th>予定プレイ時間</th>
+      <th>募集主</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recruitments.each do |recruitment| %>
+      <tr>
+        <td><%= recruitment.title  %></td>
+        <td><%= recruitment.appropriate_level %></td>
+        <td><%= recruitment.start_time %></td>
+        <td><%= recruitment.play_time %></td>
+        <td><%= recruitment.master_name %></td>
+        <td><%= link_to "詳細", recruitment_path(recruitment) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
