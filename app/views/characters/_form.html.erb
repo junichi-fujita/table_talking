@@ -1,0 +1,43 @@
+<h3>基本情報</h3>
+  <div class="form-group">
+    <%= form.label "名前" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label "種族" %>
+    <%= form.select :race, options_for_select_from_enum(Character, :race), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label "職業" %>
+    <%= form.select :job, options_for_select_from_enum(Character, :job), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label "レベル" %>
+    <%= form.number_field :level %>
+  </div>
+  <div class="form-group">
+    <%= form.label "経験値" %>
+    <%= form.number_field :exprience %>
+  </div>
+<h3>パラメータ</h3>
+  <div class="form-group">
+    <%= form.label "筋力" %>
+    <%= form.number_field :strength %>
+  </div>
+  <div class="form-group">
+    <%= form.label "知性" %>
+    <%= form.number_field :intelligence %>
+  </div>
+  <div class="form-group">
+    <%= form.label "敏捷" %>
+    <%= form.number_field :agility %>
+  </div>
+<h3>備品等</h3>
+  <div class="form-group">
+      <%= form.label "所持金" %>
+      <%= form.number_field :money %>
+  </div>
+  <div class="form-group">
+      <%= form.label "持ち物" %>
+      <%= form.text_area :stock %>
+  </div>

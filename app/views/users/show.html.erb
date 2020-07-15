@@ -4,6 +4,14 @@
 
     <%= link_to "アカウントの変更", edit_user_registration_path(current_user) %>
   </div>
+  <div class="d-flex justify-content-end">
+    <%#= binding.pry %>
+    <% if @user.characters.last&.user_id %>
+      <%= link_to "キャラクター情報の詳細", character_path(id: @user.characters.last.id) %>
+    <% else %>
+      <%= link_to "キャラクターの新規作成", new_character_path %>
+    <% end %>
+  </div>
 
 
   <table class="table table-hover">

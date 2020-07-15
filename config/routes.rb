@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       patch "reject", on: :member
     end
   end
+  resources :characters
 end

@@ -5,4 +5,5 @@ class User < ApplicationRecord
   
   has_many :participant_managements, dependent: :destroy
   has_many :recruitments, through: :participant_managements
+  has_many :characters, dependent: :destroy
 end
