@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h1>マイアカウント</h1>
+
+    <%= link_to "アカウントの変更", edit_user_registration_path(current_user) %>
+  </div>
+
+
+  <table class="table table-hover">
+    <tr>
+      <th>プレイヤー名</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <th><%= @user.email %></th>
+    </tr>
+  </table>
+
+  <h3>募集に応募しているプレイヤー</h2>
+  <table class="table table-hover">
+    <% @recruitments.each do |recruitment| %>
+      <% if recruitment.master_name == current_user.name%>
+        <% recruitment.participant_managements.each do |pm|%>
+          <% if recruitment.id == pm.application %>
+            <tr>
+              <th>ユーザー名</th>
+              <th>コメント</th>
+            </tr>
+            <tr>
+              <td> <%= pm.user.name %></td>
+              <td><%= pm.comment %></td>
+            </tr>
+            <%#= binding.pry %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </table>
+
+
+  <h3>応募したイベント</h2>
+  <table class="table table-hover">
+    <tr>
+      <th>イベント名</th>
+      <th>イベント内容</th>
+      <th>マスター名</th>
+    </tr>
+    <% @recruitments.each do |recruitment| %>
+      <% recruitment.participant_managements.each do |pm| %>
+        <% if current_user.id == pm.user_id %>
+          <tr>
+            <td><%= recruitment.title %></td>
+            <td><%= recruitment.content %></td>
+            <td><%= recruitment.master_name %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </table>
+</div>

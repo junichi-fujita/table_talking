@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_065556) do
     t.bigint "user_id", null: false
     t.bigint "recruitment_id", null: false
     t.boolean "acceptance", default: false, null: false
+    t.integer "application"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
