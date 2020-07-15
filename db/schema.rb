@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_065556) do
+ActiveRecord::Schema.define(version: 2020_07_15_000650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.integer "race", default: 0, null: false
+    t.integer "job", default: 0, null: false
+    t.integer "level", default: 1, null: false
+    t.integer "strength", null: false
+    t.integer "agility", null: false
+    t.integer "intelligence", null: false
+    t.integer "money", default: 0, null: false
+    t.text "stock"
+    t.integer "experience", default: 0, null: false
+    t.integer "max_hit_point", default: 10, null: false
+    t.integer "current_hit_point", default: 10, null: false
+    t.integer "max_magic_point", default: 10, null: false
+    t.integer "current_magic_point", default: 10, null: false
+    t.integer "attack", null: false
+    t.integer "defense", null: false
+    t.integer "evasion", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_characters_on_user_id"
+  end
 
   create_table "participant_managements", force: :cascade do |t|
     t.bigint "user_id", null: false

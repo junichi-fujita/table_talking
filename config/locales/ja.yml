@@ -1,0 +1,11 @@
+ja:
+  enums:
+    character:
+      race:
+        human: 人間
+        elf: エルフ
+        dwarf: ドワーフ
+      job:
+        fighter: 戦士
+        mage: 魔法使い
+        thief: 盗賊
