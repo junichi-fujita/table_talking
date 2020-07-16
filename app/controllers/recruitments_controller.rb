@@ -20,7 +20,7 @@ class RecruitmentsController < ApplicationController
   def create
     @recruitment = Recruitment.new(recruitment_paramas)
     @recruitment.assign_attributes(master_name: current_user.name)
-    if @recruitment.save!
+    if @recruitment.save
       redirect_to @recruitment, notice: "募集内容を登録しました。"
     else
       render :new
@@ -33,7 +33,7 @@ class RecruitmentsController < ApplicationController
 
   def update
     @recruitment.assign_attributes(recruitment_paramas)
-    if @recruitment.save!
+    if @recruitment.save
       redirect_to @recruitment, notice: "募集内容を編集しました。"
     else
       render :new

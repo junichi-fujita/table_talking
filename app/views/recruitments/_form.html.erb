@@ -1,23 +1,23 @@
 
-  <table class="table">
-      <tr>
-        <th><%= form.label :title %></th>
-        <td> <%= form.text_field :title %></td>
-      </tr>
-      <tr>
-        <th><%= form.label :content %></th>
-        <td><%= form.text_area :content %></td>
-      </tr>
-      <tr>
-        <th><%= form.label :appropriate_level %></th>
-        <td><%= form.number_field :appropriate_level %></td>
-      </tr>
-      <tr>
-        <th><%= form.label :start_time %></th>
-        <td><%= form.datetime_field :start_time %></td>
-      </tr>
-      <tr>
-        <th><%= form.label :play_time %></th>
-        <td><%= form.number_field :play_time %></td>
-      </tr>
-    </table>
+<form>
+  <div class="form-group">
+    <%= form.label :title %><span class="badge badge-danger ml-1">必須</span>
+    <%= form.text_field :title, class: "form-control" %><span><small>※30文字まで</small></span>
+  </div>
+  <div class="form-group">
+    <%= form.label :content %><span class="badge badge-danger ml-1">必須</span>
+    <%= form.text_area :content, class: "form-control" %><span><small>※255文字まで</small></span>
+  </div>
+  <div class="form-group">
+    <%= form.label :appropriate_level %><span class="badge badge-danger ml-1">必須</span>
+    <%= form.number_field :appropriate_level, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :start_time %><span class="badge badge-danger ml-1">必須</span>
+    <%= form.datetime_field :start_time, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :play_time %><span class="badge badge-danger ml-1">必須</span>
+    <%= form.number_field :play_time, class: "form-control" %>
+  </div>
+</form>

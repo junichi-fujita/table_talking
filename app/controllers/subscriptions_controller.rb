@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
     pm = ParticipantManagement.new(subscription_params)
     pm.assign_attributes(user_id: current_user.id, application: subscription.id)
     subscription.participant_managements << pm
-    if subscription.save!
+    if subscription.save
       redirect_to recruitment_url(subscription)
     else
       render :new
@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
 
   def update
     @subscription.assign_attributes(subscription_params)
-    if @subscription.save!
+    if @subscription.save
       redirect_to @recruitment, notice: "コメントを編集しました"
     else
       render :edit
