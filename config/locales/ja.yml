@@ -9,3 +9,13 @@ ja:
         fighter: 戦士
         mage: 魔法使い
         thief: 盗賊
+  activerecord:
+    models:
+      recruitment: 募集
+    attributes:
+      recruitment:
+        title: タイトル
+        content: 募集内容
+        appropriate_level: 適正レベル
+        start_time: 予定開始日時
+        play_time: 予定プレイ時間
