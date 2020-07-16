@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :participant_managements, dependent: :destroy
   has_many :recruitments, through: :participant_managements
   has_many :characters, dependent: :destroy
+
+  validates :email, presence: true, "valid_email_2/email": true
 end
