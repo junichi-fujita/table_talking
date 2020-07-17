@@ -20,11 +20,13 @@ class RecruitmentsController < ApplicationController
   def create
     @recruitment = Recruitment.new(recruitment_paramas)
     @recruitment.assign_attributes(master_name: current_user.name)
-    if @recruitment.save
-      format.js
-      
-    else
-      render :new
+    respond_to do |format|
+      if @recruitment.save
+        @recruitments = Recruitment.order(id: :desc)
+        format.js
+      else
+        format.html { render :new}
+      end
     end
   end
 
