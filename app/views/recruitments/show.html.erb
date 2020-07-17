@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>募集詳細画面</h1>
+
+  <div id="recruitment-modal" class="modal fade"></div>
 
   <% if game_master? %>
     <div class="d-flex justify-content-end">
-      <%= link_to '編集', edit_recruitment_path, class: "btn btn-primary" %>
+      <%= link_to '編集', edit_recruitment_path, remote: true, class: "btn btn-primary" %>
       <%= link_to '削除', recruitment_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
     </div>
   <% else %>
-    <%#= binding.pry %>
     <% if current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || current_user.name.in?(@recruitment.users.pluck(:name)) %>
     <% else %>
       <div class="d-flex justify-content-end">
@@ -15,58 +15,7 @@
       </div>
     <% end %>
   <% end %>
-
-
-  <table class="table">
-    <tr>
-      <th><%= Recruitment.human_attribute_name("content") %></th>
-      <td><%= @recruitment.content %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
-      <td><%= @recruitment.appropriate_level %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("start_time") %></th>
-      <td><%= @recruitment.start_time %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("play_time") %></th>
-      <td><%= @recruitment.play_time %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("game_master") %></th>
-      <td><%= @recruitment.master_name %></td>
-    </tr>
-  </table>
-
-  <table class="table">
-    <tr>
-      <th>ユーザー名</th>
-      <th>コメント</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @recruitments.each do |recruitment| %>
-      <tr>
-      <% if (params[:id]).to_i == recruitment.participant_managements.first&.recruitment_id %>
-        <% recruitment.participant_managements.each do |pm| %>
-          <td><%= pm.user.name %></td>
-          <td><%= pm.comment %></td>
-          <% if current_user.id == pm.user_id%>
-            <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment, pm) %></td>
-            <td><%= link_to "応募の取消", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
-          <% end %>
-          <% if game_master? %>
-            <%#= binding.pry %>
-            <% if pm.acceptance == false %>
-              <td><%= link_to "承認", accept_recruitment_subscription_path(recruitment, pm), method: :patch %></td>
-            <% else %>
-              <td><%= link_to "承認取消", reject_recruitment_subscription_path(recruitment, pm), method: :patch %></td>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-      </tr>
-    <% end %>
+  <div id="show_area">
+    <%= render "show", recruitment: @recruitment, recruitments: @recruitments %>
+  </div>
 </div>

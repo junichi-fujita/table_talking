@@ -25,7 +25,7 @@ class RecruitmentsController < ApplicationController
         @recruitments = Recruitment.order(id: :desc)
         format.js
       else
-        format.html { render :new}
+        format.html { render :new }
       end
     end
   end
@@ -36,10 +36,13 @@ class RecruitmentsController < ApplicationController
 
   def update
     @recruitment.assign_attributes(recruitment_paramas)
-    if @recruitment.save
-      redirect_to @recruitment, notice: "募集内容を編集しました。"
-    else
-      render :new
+    respond_to do |format|
+      if @recruitment.save
+        @recruitments = Recruitment.order(id: :desc)
+        format.js
+      else
+        format.html
+      end
     end
   end
 
