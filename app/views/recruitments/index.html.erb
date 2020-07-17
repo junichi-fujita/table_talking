@@ -1,6 +1,9 @@
 <h1>イベントのマッチング</h1>
 
-<%= link_to "イベントの作成", new_recruitment_path %>
+<%= link_to "イベントの作成", new_recruitment_path, remote: true %>
+
+<div id="recruitment-modal" class="modal fade"></div>
+
 <table class="table">
   <thead>
     <tr>
@@ -26,3 +29,4 @@
   </tbody>
 
 </table>
+

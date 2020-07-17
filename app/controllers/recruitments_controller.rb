@@ -21,7 +21,8 @@ class RecruitmentsController < ApplicationController
     @recruitment = Recruitment.new(recruitment_paramas)
     @recruitment.assign_attributes(master_name: current_user.name)
     if @recruitment.save
-      redirect_to @recruitment, notice: "募集内容を登録しました。"
+      format.js
+      
     else
       render :new
     end
