@@ -8,12 +8,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    subscription = Recruitment.find(params[:recruitment_id])
-    pm = ParticipantManagement.new(subscription_params)
-    pm.assign_attributes(user_id: current_user.id, application: subscription.id)
-    subscription.participant_managements << pm
+    recruitment = Recruitment.find(params[:recruitment_id])
+    subscription = recruitment.participant_managements.new(subscription_params)
+    subscription.assign_attributes(user_id: current_user.id)
     if subscription.save
-      redirect_to recruitment_url(subscription)
+      redirect_to recruitment_url(recruitment)
     else
       render :new
     end

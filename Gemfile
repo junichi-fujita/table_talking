@@ -51,6 +51,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.17'
   gem 'webdrivers'
 end
