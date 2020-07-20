@@ -5,7 +5,7 @@ class RecruitmentsController < ApplicationController
   def index
     # @recruitments = Recruitment.order(id: :desc)
     @q = Recruitment.ransack(params[:q])
-    @recruitments = @q.result(distinct: true).order(id: :desc)
+    @recruitments = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(10)
   end
 
   def show

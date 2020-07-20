@@ -21,7 +21,7 @@
         <td><%= recruitment.start_time %></td>
         <td><%= recruitment.play_time %></td>
         <td><%= recruitment.master_name %></td>
-        <td><%= link_to "詳細", recruitment_path(recruitment) %></td>
+        <td><%= link_to "詳細", recruitment_path(recruitment), class: "btn btn-outline-dark" %></td>
       </tr>
     </tbody>
   <% end %>
