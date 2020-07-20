@@ -2,14 +2,14 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1>マイアカウント</h1>
 
-    <%= link_to "アカウントの変更", edit_user_registration_path(current_user), class: "btn btn-info" %>
+    <%= link_to "アカウントの変更", edit_user_registration_path(current_user), class: "btn btn-outline-dark" %>
   </div>
   <div class="d-flex justify-content-end">
     <%#= binding.pry %>
     <% if @user.characters.last&.user_id %>
-      <%= link_to "キャラクター情報の詳細", character_path(id: @user.characters.last.id), class: "btn btn-info mb-3" %>
+      <%= link_to "キャラクター情報の詳細", character_path(id: @user.characters.last.id), class: "btn btn-outline-dark mb-3" %>
     <% else %>
-      <%= link_to "キャラクターの新規作成", new_character_path, class: "btn btn-info mb-3" %>
+      <%= link_to "キャラクターの新規作成", new_character_path, class: "btn btn-outline-dark mb-3" %>
     <% end %>
   </div>
 

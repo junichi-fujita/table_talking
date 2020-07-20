@@ -45,9 +45,9 @@
           <% if game_master? %>
             <%#= binding.pry %>
             <% if pm.acceptance == false %>
-              <td><%= link_to "承認", accept_recruitment_subscription_path(recruitment, pm), method: :patch %></td>
+              <td><%= link_to "承認", accept_recruitment_subscription_path(recruitment, pm), method: :patch, class: "btn btn-outline-dark" %></td>
             <% else %>
-              <td><%= link_to "承認取消", reject_recruitment_subscription_path(recruitment, pm), method: :patch %></td>
+              <td><%= link_to "承認取消", reject_recruitment_subscription_path(recruitment, pm), method: :patch, class: "btn btn-outline-danger" %></td>
             <% end %>
           <% end %>
         <% end %>

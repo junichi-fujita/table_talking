@@ -3,6 +3,8 @@
 
   <%= form_with(model: @character, local: true) do |form| %>
     <%= render "form", form: form %>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-dark" %>
+    <%= link_to "　戻る　", :back, class: "btn btn-outline-dark" %>
   <% end %>
+  
 </div>

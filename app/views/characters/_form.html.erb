@@ -1,7 +1,9 @@
-<h3>基本情報</h3>
-  <div class="form-group">
-    <%= form.label "名前" %>
-    <%= form.text_field :name, class: "form-control" %>
+<h3 class="mt-3">基本情報</h3>
+  <div class="row mt-3">
+    <div class="form-group col-sm-6">
+      <%= form.label "名前" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
   <div class="form-group">
     <%= form.label "種族" %>
@@ -11,33 +13,40 @@
     <%= form.label "職業" %>
     <%= form.select :job, options_for_select_from_enum(Character, :job), class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= form.label "レベル" %>
-    <%= form.number_field :level %>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.label "レベル" %>
+      <%= form.number_field :level, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label "経験値" %>
+      <%= form.number_field :exprience, class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= form.label "経験値" %>
-    <%= form.number_field :exprience %>
-  </div>
-<h3>パラメータ</h3>
-  <div class="form-group">
-    <%= form.label "筋力" %>
-    <%= form.number_field :strength %>
-  </div>
-  <div class="form-group">
-    <%= form.label "知性" %>
-    <%= form.number_field :intelligence %>
-  </div>
-  <div class="form-group">
-    <%= form.label "敏捷" %>
-    <%= form.number_field :agility %>
+
+  <h3>パラメータ</h3>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.label "筋力" %>
+      <%= form.number_field :strength, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label "知性" %>
+      <%= form.number_field :intelligence, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label "敏捷" %>
+      <%= form.number_field :agility, class: "form-control" %>
+    </div>
   </div>
 <h3>備品等</h3>
-  <div class="form-group">
-      <%= form.label "所持金" %>
-      <%= form.number_field :money %>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+        <%= form.label "所持金" %>
+        <%= form.number_field :money, class: "form-control" %>
+    </div>
   </div>
   <div class="form-group">
       <%= form.label "持ち物" %>
-      <%= form.text_area :stock %>
+      <%= form.text_area :stock, class: "form-control", rows: "5" %>
   </div>
