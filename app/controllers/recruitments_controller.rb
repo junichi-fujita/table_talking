@@ -3,7 +3,9 @@ class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: %i[show edit update destroy]
   
   def index
-    @recruitments = Recruitment.order(id: :desc)
+    # @recruitments = Recruitment.order(id: :desc)
+    @q = Recruitment.ransack(params[:q])
+    @recruitments = @q.result(distinct: true).order(id: :desc)
   end
 
   def show

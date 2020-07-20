@@ -1,6 +1,19 @@
 <div class="container">
 
-  <%= link_to "イベントの作成", new_recruitment_path, remote: true %>
+  <div class="d-flex justify-content-end">
+    <%= search_form_for @q do |form| %>
+      <div class="form-group form-inline">
+        <%#= form.label :title_cont, "タイトルで検索", class: "col-sm col-form-label" %>
+        <div>
+          <%= form.search_field :title_cont, class: "form-control" %>
+          <%= form.submit class: "btn btn-outline-dark from-control" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-end">
+    <%= link_to "イベントの作成", new_recruitment_path, remote: true, class: "btn btn-info mb-3" %>
+  </div>
 
   <div id="recruitment-modal" class="modal fade"></div>
     <div id="comments_area">
