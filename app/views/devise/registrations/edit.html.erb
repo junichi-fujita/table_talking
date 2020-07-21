@@ -19,15 +19,14 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
+      <%= f.label :icon %><br />
+      <%= f.file_field :icon %>
+      <%= f.hidden_field :icon_cache %>
     </div>
 
-    <div class="field">
+    <hr>
+
+    <div class="field mt-3">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
@@ -38,13 +37,15 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Update" %>
+      <%= f.submit "Update", class: "btn btn-outline-dark mt-3"%>
     </div>
   <% end %>
 
-  <h3>アカウントの削除</h3>
+  <hr>
 
-  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <h3 class="mt-3">アカウントの削除</h3>
 
-  <%= link_to "Back", :back %>
+  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
+
+  <%= link_to "Back", :back, class: "btn btn-outline-dark" %>
 </div>

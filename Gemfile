@@ -19,6 +19,9 @@ gem 'bootstrap'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'mini_magick'
+gem 'carrierwave'
+
 
 #BackEnd
 gem 'jbuilder', '~> 2.5'

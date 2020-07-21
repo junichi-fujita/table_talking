@@ -23,6 +23,10 @@
       <th>メールアドレス</th>
       <th><%= @user.email %></th>
     </tr>
+    <tr>
+      <th>プロフィール画像</th>
+      <th><%= image_tag @user.icon_url(:thumb) %></th>
+    </tr>
   </table>
 
   <h3>募集に応募しているプレイヤー</h2>
