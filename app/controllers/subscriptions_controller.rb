@@ -3,18 +3,22 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: %i[edit update destroy accept reject]
 
   def new
-    @recruitment = Recruitment.new
-    @subscription = @recruitment.participant_managements
+    @recruitment = Recruitment.find(params[:recruitment_id])
+    @subscription = ParticipantManagement.new
   end
 
   def create
-    recruitment = Recruitment.find(params[:recruitment_id])
-    subscription = recruitment.participant_managements.new(subscription_params)
+    binding.pry
+    @recruitment = Recruitment.find(params[:recruitment_id])
+    subscription = @recruitment.participant_managements.new(subscription_params)
     subscription.assign_attributes(user_id: current_user.id)
-    if subscription.save
-      redirect_to recruitment_url(recruitment)
-    else
-      render :new
+    respond_to do |format|
+      if subscription.save
+        @recruitments = Recruitment.order(id: :desc)
+        format.js
+      else
+        format.html { render :new }
+      end
     end
   end
 

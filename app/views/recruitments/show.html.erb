@@ -1,6 +1,7 @@
 <div class="container">
 
   <div id="recruitment-modal" class="modal fade"></div>
+  <div id="subscription-modal" class="modal fade"></div>
 
   <% if game_master? %>
     <div class="d-flex justify-content-end">
@@ -11,7 +12,7 @@
     <% if current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || current_user.name.in?(@recruitment.users.pluck(:name)) %>
     <% else %>
       <div class="d-flex justify-content-end">
-        <%= link_to "応募する", new_recruitment_subscription_path(@recruitment), class: "btn btn-primary" %>
+        <%= link_to "応募する", new_recruitment_participant_management_path(@recruitment), remote: true, class: "btn btn-outline-dark" %>
       </div>
     <% end %>
   <% end %>

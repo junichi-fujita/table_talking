@@ -1,8 +1,0 @@
-<div class="container">
-  <h1>募集に応募する </h1>
-
-  <%= form_with(model: @subscription, url: recruitment_subscriptions_path, local: true) do |form| %>
-    <%= form.text_area :comment %>
-    <%= form.submit "応募する" %>
-  <% end %>
-</div>

@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'Recruitment', type: :system do
-  before do
-    @user = create(:user)
-    @second_user = create(:second_user)
-    @recruitment = create(:recruitment)
-    @second_recruitment = create(:second_recruitment)
 
+  let!(:user) { create(:user) }
+  # let!(:second_user) { create(:second_user) }
+  let!(:recruitment) { create(:recruitment) }
+  let!(:second_recruitment) { create(:second_recruitment) }
+  # let!(:participant_management) { create(:participant_management)}
+  # let!(:second_participant_management) { create(:second_participant_management)}
+
+  before do
     visit root_path
     click_link "ログイン"
-    fill_in "メールアドレス", with: @user.email
-    fill_in "パスワード", with: @user.password
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
     click_button "ログイン" 
   end
   
@@ -29,5 +32,12 @@ RSpec.describe 'Recruitment', type: :system do
   example "イベントの詳細を表示する" do
     click_on "詳細", match: :first
     expect(page).to have_content("募集内容") 
+  end
+
+  example "タイトルで検索する" do
+    fill_in "q_title_cont", with: "test_title"
+    click_button "検索"
+    expect(page).to have_content("2")
+    expect(page).not_to have_content("second_title")
   end
 end
