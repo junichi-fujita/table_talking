@@ -1,40 +1,39 @@
 if Rails.env == "development"
-  
-  10.times do |i|
+  names = %w(赤添衛門 敦実親王 安倍清行 阿保経覧 在原滋春 在原業平 在原棟梁 在原元方 在原行平 粟田口忠良 安法 伊賀少将 和泉式部 伊勢大輔 殷富門院大輔 宇都宮頼綱 馬内侍 恵慶 大江為基 大江千里)
+
+  titles = %w(
+    ゴブリン退治 
+    まったりプレイ 
+    ダンジョン探索 
+    宝探し 
+    人助け 
+    謎解き 
+  )
+  20.times do |i|
     User.create!(
-      name: "user#{i}",
-      email: "user#{i}@example.com",
+      name: names[i],
+      email: "test#{i}@example.com",
       password: "aaaaaa",
     )
   end
 
-  %w(user0 user1 user2).each do |name|
-    10.times do |i|
-      recruitment = Recruitment.create!(
-        title: "test#{i}",
-        content: "test_content#{i}",
-        appropriate_level: "#{i}",
-        start_time: "2020-07-6",
-        play_time: "#{i}",
-        master_name: "user#{i}",
-      )
-      if i == 7 || i == 8 || 9
-        %w(user3).each do |name2|
-          user = User.find_by(name: name2)
-          user.recruitments << recruitment
-        end
-      end
-    end
+  20.times do |i|
+    title_content = titles.sample
+    recruitment = Recruitment.create!(
+      title: title_content,
+      content: "#{title_content}します！！",
+      appropriate_level: "#{i + 1}",
+      start_time: "2020-08-6",
+      play_time: "#{i + 1}",
+      master_name: names[i],
+    )
   end
+  num = %w(0..19)
 
-  
-
-  # 10.times do |i|
-  #   ParticipantManagement.create!(
-  #     user_id: i,
-  #     recruitment_id: i,
-  #     acceptance: false,
-  #     comment: "aaa#{i}",
-  #   )
-  # end
+  20.times do |i|
+    ParticipantManagement.create(
+      user_id: "#{num.sample}",
+      recruitment_id: "#{num.sample}"
+    )
+  end
 end
