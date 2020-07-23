@@ -15,9 +15,9 @@
   </div>
 
   <div id="recruitment-modal" class="modal fade"></div>
-    <div id="comments_area">
-      <%= render partial: "rec", recruitments: @recruitments %>
-    </div>
+  <div id="comments_area">
+    <%= render "rec", recruitments: @recruitments %>
+  </div>
 
   <div class="mb-3">
     <%= paginate @recruitments %>

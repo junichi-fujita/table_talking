@@ -1,57 +1,30 @@
 <table class="table mt-3">
-    <tr>
-      <th><%= Recruitment.human_attribute_name("title") %></th>
-      <td><%= recruitment.title %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("content") %></th>
-      <td><%= recruitment.content %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
-      <td><%= recruitment.appropriate_level %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("start_time") %></th>
-      <td><%= l recruitment.start_time, format: :short %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("play_time") %></th>
-      <td><%= recruitment.play_time %></td>
-    </tr>
-    <tr>
-      <th><%= Recruitment.human_attribute_name("game_master") %></th>
-      <td><%= recruitment.master_name %></td>
-    </tr>
-  </table>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("title") %></th>
+    <td><%= recruitment.title %></td>
+  </tr>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("content") %></th>
+    <td><%= recruitment.content %></td>
+  </tr>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
+    <td><%= recruitment.appropriate_level %></td>
+  </tr>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("start_time") %></th>
+    <td><%= l recruitment.start_time, format: :short %></td>
+  </tr>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("play_time") %></th>
+    <td><%= recruitment.play_time %></td>
+  </tr>
+  <tr>
+    <th><%= Recruitment.human_attribute_name("game_master") %></th>
+    <td><%= recruitment.master_name %></td>
+  </tr>
+</table>
 
-  <table class="table mt-3">
-    <tr>
-      <th>ユーザー名</th>
-      <th>コメント</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% recruitments.each do |recruitment| %>
-      <tr>
-      <% if (params[:id]).to_i == recruitment.participant_managements.first&.recruitment_id %>
-        <% recruitment.participant_managements.each do |pm| %>
-          <td><%= pm.user.name %></td>
-          <td><%= pm.comment %></td>
-          <% if current_user.id == pm.user_id%>
-            <td><%= link_to "編集", edit_recruitment_subscription_path(recruitment, pm) %></td>
-            <td><%= link_to "応募の取消", recruitment_subscription_path(recruitment, pm), method: :delete %></td>
-          <% end %>
-          <% if game_master? %>
-            <%#= binding.pry %>
-            <% if pm.acceptance == false %>
-              <td><%= link_to "承認", accept_recruitment_subscription_path(recruitment, pm), method: :patch, class: "btn btn-outline-dark" %></td>
-            <% else %>
-              <td><%= link_to "承認取消", reject_recruitment_subscription_path(recruitment, pm), method: :patch, class: "btn btn-outline-danger" %></td>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-      </tr>
-    <% end %>
-  </table>
+<div id="subscription-area">
+  <%= render "subscriptions/subscription", recruitments: @recruitments %>
+</div>

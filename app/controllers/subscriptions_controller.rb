@@ -8,12 +8,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @recruitment = Recruitment.find(params[:recruitment_id])
-    subscription = @recruitment.participant_managements.new(subscription_params)
-    subscription.assign_attributes(user_id: current_user.id)
+    @subscription = @recruitment.participant_managements.new(subscription_params)
+    @subscription.assign_attributes(user_id: current_user.id)
     respond_to do |format|
-      if subscription.save
+      if @subscription.save
         @recruitments = Recruitment.order(id: :desc)
         format.js
       else
