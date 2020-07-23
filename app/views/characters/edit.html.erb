@@ -1,8 +1,11 @@
 <div class="container">
-  <h1>キャラクターの編集</h1>
-
-  <%= form_with(model: @character, local: true) do |form| %>
-    <%= render "form", form: form %>
-    <%= form.submit %>
+  <% if current_user.id == @character.user_id%>
+    <h1>キャラクターの編集</h1>
+    <%= binding.pry %>
+    <%= form_with(model: @character, local: true) do |form| %>
+      <%= render "form", form: form %>
+      <%= form.submit class: "btn btn-outline-dark" %>
+      <%= link_to "　戻る　", :back, class: "btn btn-outline-dark" %>
+    <% end %>
   <% end %>
 </div>

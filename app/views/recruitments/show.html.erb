@@ -1,23 +1,21 @@
 <div class="container">
-  <% if @recruitment.id.in?(current_user.recruitments.ids) %>
-    <div id="recruitment-modal" class="modal fade"></div>
-    <div id="subscription-modal" class="modal fade"></div>
+  <div id="recruitment-modal" class="modal fade"></div>
+  <div id="subscription-modal" class="modal fade"></div>
 
-    <% if game_master? %>
-      <div class="d-flex justify-content-end">
-        <%= link_to '編集', edit_recruitment_path, remote: true, class: "btn btn-outline-dark" %>
-        <%= link_to '削除', recruitment_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-1" %>
-      </div>
-    <% else %>
-      <% if current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || current_user.name.in?(@recruitment.users.pluck(:name)) %>
-      <% else %>
-        <div class="d-flex justify-content-end">
-          <%= link_to "応募する", new_recruitment_participant_management_path(@recruitment), remote: true, class: "btn btn-outline-dark" %>
-        </div>
-      <% end %>
-    <% end %>
-    <div id="show-area">
-      <%= render "show", recruitment: @recruitment, recruitments: @recruitments %>
+  <% if game_master? %>
+    <div class="d-flex justify-content-end">
+      <%= link_to '編集', edit_recruitment_path, remote: true, class: "btn btn-outline-dark" %>
+      <%= link_to '削除', recruitment_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-1" %>
     </div>
+  <% else %>
+    <% if current_user.id.in?(@recruitment.participant_managements.pluck(:user_id)) || current_user.name.in?(@recruitment.users.pluck(:name)) %>
+    <% else %>
+      <div class="d-flex justify-content-end">
+        <%= link_to "応募する", new_recruitment_participant_management_path(@recruitment), remote: true, class: "btn btn-outline-dark" %>
+      </div>
+    <% end %>
   <% end %>
+  <div id="show-area">
+    <%= render "show", recruitment: @recruitment, recruitments: @recruitments %>
+  </div>
 </div>
