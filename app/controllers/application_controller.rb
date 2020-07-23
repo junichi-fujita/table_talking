@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     recruitments_path
   end
 
-
-
   private
 
   def game_master?
