@@ -28,46 +28,47 @@
       <th><%= image_tag @user.icon_url(:thumb) %></th>
     </tr>
   </table>
-
-  <h3>募集に応募しているプレイヤー</h2>
-  <table class="table table-hover">
-    <% @recruitments.each do |recruitment| %>
-      <% if recruitment.master_name == current_user.name%>
-        <% recruitment.participant_managements.each do |pm|%>
-          <% if recruitment.id == pm.application %>
-            <tr>
-              <th>ユーザー名</th>
-              <th>コメント</th>
-            </tr>
-            <tr>
-              <td> <%= pm.user.name %></td>
-              <td><%= pm.comment %></td>
-            </tr>
-            <%#= binding.pry %>
+  <div class="border p-4 rounded">
+    <h3>募集に応募しているプレイヤー</h2>
+    <table class="table table-hover">
+      <% @recruitments.each do |recruitment| %>
+        <% if recruitment.master_name == current_user.name%>
+          <% recruitment.participant_managements.each do |pm|%>
+            <% if recruitment.id == pm.application %>
+              <tr class="table-active">
+                <th>ユーザー名</th>
+                <th>コメント</th>
+              </tr>
+              <tr>
+                <td> <%= pm.user.name %></td>
+                <td><%= pm.comment %></td>
+              </tr>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </table>
+    </table>
+  </div>
 
-
-  <h3>応募したイベント</h2>
-  <table class="table table-hover">
-    <tr>
-      <th>イベント名</th>
-      <th>イベント内容</th>
-      <th>マスター名</th>
-    </tr>
-    <% @recruitments.each do |recruitment| %>
-      <% recruitment.participant_managements.each do |pm| %>
-        <% if current_user.id == pm.user_id %>
-          <tr>
-            <td><%= recruitment.title %></td>
-            <td><%= recruitment.content %></td>
-            <td><%= recruitment.master_name %></td>
-          </tr>
+  <div class="border p-4 rounded mt-3">
+    <h3>応募したイベント</h2>
+    <table class="table table-hover">
+      <tr class="table-active">
+        <th>イベント名</th>
+        <th>イベント内容</th>
+        <th>マスター名</th>
+      </tr>
+      <% @recruitments.each do |recruitment| %>
+        <% recruitment.participant_managements.each do |pm| %>
+          <% if current_user.id == pm.user_id %>
+            <tr>
+              <td><%= recruitment.title %></td>
+              <td><%= recruitment.content %></td>
+              <td><%= recruitment.master_name %></td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </table>
+    </table>
+  </div>
 </div>
