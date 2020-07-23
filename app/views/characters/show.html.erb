@@ -1,69 +1,65 @@
 <div class="container">
   <h1>キャラクター詳細</h1>
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to "編集", edit_character_path(@character), class: "btn btn-outline-dark mr-1" %>
+    <%= link_to "削除", character_path(@character), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger" %>
+  </div>
 
-  <%= link_to "キャラクター編集", edit_character_path(@character) %>
-  <%= link_to "キャラクター削除", character_path(@character), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-
-  <table class="table table-hover">
-    <tr>
-      <th>キャラクター名</th>
-      <td><%= @character.name %></td>
-    </tr>
-    <tr>
-      <th>種族</th>
-      <td><%= t("enums.character.race.#{@character.race}") %></td>
-    </tr>
-    <tr>
-      <th>職業</th>
-      <td><%= t("enums.character.job.#{@character.job}") %></td>
-    </tr>
-    <tr>
-      <th>レベル</th>
-      <td><%= @character.level %></td>
-    </tr>
-    <tr>
-      <th>筋力</th>
-      <td><%= @character.strength %></td>
-    </tr>
-    <tr>
-      <th>知性</th>
-      <td><%= @character.intelligence %></td>
-    </tr>
-    <tr>
-      <th>敏捷</th>
-      <td><%= @character.agility %></td>
-    </tr>
-    <tr>
-      <th>攻撃力</th>
-      <td><%= @character.attack %></td>
-    </tr>
-    <tr>
-      <th>防御力</th>
-      <td><%= @character.defense %></td>
-    </tr>
-    <tr>
-      <th>回避力</th>
-      <td><%= @character.evasion %></td>
-    </tr>
-    <tr>
-      <th>体力</th>
-      <td><%= @character.max_hit_point %></td>
-    </tr>
-    <tr>
-      <th>魔力</th>
-      <td><%= @character.max_magic_point %></td>
-    </tr>
-    <tr>
-      <th>経験値</th>
-      <td><%= @character.experience %></td>
-    </tr>
-    <tr>
-      <th>所持金</th>
-      <td><%= @character.money %></td>
-    </tr>
-    <tr>
-      <th>持ち物</th>
-      <td><%= @character.stock %></td>
-    </tr>
-  </table>
+  <div class="border p-4 rounded">
+    <table class="table table-hover">
+      <tr>
+        <th>キャラクター名</th>
+        <td><%= @character.name %></td>
+      </tr>
+    </table>
+    <table class="table table-hover">
+      <tr>
+        <th>種族</th>
+        <td><%= t("enums.character.race.#{@character.race}") %></td>
+        <th>職業</th>
+        <td><%= t("enums.character.job.#{@character.job}") %></td>
+        <th>レベル</th>
+        <td><%= @character.level %></td>
+      </tr>
+    </table>
+    <table class="table table-hover">
+      <tr>
+        <th>筋力</th>
+        <td><%= @character.strength %></td>
+        <th>知性</th>
+        <td><%= @character.intelligence %></td>
+        <th>敏捷</th>
+        <td><%= @character.agility %></td>
+      </tr>
+    </table>
+    <table class="table table-hover">
+      <tr>
+        <th>攻撃力</th>
+        <td><%= @character.attack %></td>
+        <th>防御力</th>
+        <td><%= @character.defense %></td>
+        <th>回避力</th>
+        <td><%= @character.evasion %></td>
+      </tr>
+    </table>
+    <table class="table table-hover">
+      <tr>
+        <th>体力</th>
+        <td><%= @character.max_hit_point %></td>
+        <th>魔力</th>
+        <td><%= @character.max_magic_point %></td>
+        <th>経験値</th>
+        <td><%= @character.experience %></td>
+        <th>所持金</th>
+        <td><%= @character.money %></td>
+      </tr>
+    </table>
+    <table class="table table-hover">
+      <tr>
+        <th>持ち物</th>
+        <td><%= @character.stock %></td>
+      </tr>
+    </table>
+  </div>
+  <%= link_to "戻る", :back, class: "btn btn-outline-dark mt-3" %>
 </div>
