@@ -1,19 +1,19 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
-  <%#= binding.pry %>
     <%= form_with(model: [recruitment, subscription]) do |form| %>
       <div class="modal-header">
+        <h5><%= recruitment.master_name %>さんのイベント</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <%= form.text_area :comment, class: "form-control" %>
+          <%= form.text_area :comment, class: "form-control", placeholder: "コメントを書いてください。" %>
         </div>
       </div>
       <div class="modal-footer">
-        <%= form.submit "応募する", class: "btn btn-outline-dark" %>
+        <%= form.submit submit, class: "btn btn-outline-dark" %>
       </div>
     <% end %>
   </div>

@@ -26,10 +26,13 @@ class SubscriptionsController < ApplicationController
 
   def update
     @subscription.assign_attributes(subscription_params)
-    if @subscription.save
-      redirect_to @recruitment, notice: "コメントを編集しました"
-    else
-      render :edit
+    respond_to do |format|
+      if @subscription.save
+        @recruitments = Recruitment.order(id: :desc)
+        format.js
+      else
+        format.html { render :new }
+      end
     end
   end
 

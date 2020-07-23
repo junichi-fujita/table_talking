@@ -1,4 +1,3 @@
-
 <table class="table mt-3">
   <tr>
     <th>ユーザー名</th>
@@ -7,15 +6,19 @@
     <th></th>
   </tr>
   <% recruitments.each do |recruitment| %>
-    <% x = params[:id] %>
-    <% if (x ||= subscription.recruitment_id).to_i == (recruitment.participant_managements.first&.recruitment_id) %>
+    <% if action_name == "create" || action_name == "update" %>
+      <% x = subscription.recruitment_id %>
+    <% else %>
+      <% x = params[:id] %>
+    <% end %>
+    <% if (x).to_i == (recruitment.participant_managements.first&.recruitment_id) %>
       <% pm = recruitment.participant_managements.last %>
         <tr>
           <td><%= pm.user.name %></td>
           <td><%= pm.comment %></td>
           <% if current_user.id == pm.user_id%>
-            <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm) %></td>
-            <td><%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete %></td>
+            <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm), remote: true, class: "btn btn-outline-dark" %></td>
+            <td><%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, class: "btn btn-outline-danger" %></td>
           <% end %>
           <% if game_master? %>
             <% if pm.acceptance == false %>

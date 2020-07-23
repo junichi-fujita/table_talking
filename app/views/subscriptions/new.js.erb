@@ -1,2 +1,2 @@
-$("#subscription-modal").html("<%= escape_javascript(render 'form', subscription: @subscription, recruitment: @recruitment) %>")
+$("#subscription-modal").html("<%= escape_javascript(render 'form', subscription: @subscription, recruitment: @recruitment, submit: "応募") %>")
 $("#subscription-modal").modal("show")

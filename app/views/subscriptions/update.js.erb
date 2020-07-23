@@ -1,0 +1,4 @@
+$("text_area").val("");
+$("#subscription-modal").modal("hide");
+
+$("#subscription-area").html("<%= j(render 'subscription', { recruitments: @recruitments, subscription: @subscription }) %>")
