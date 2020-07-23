@@ -22,6 +22,7 @@ ja:
   activerecord:
     models:
       recruitment: 募集
+      user:
     attributes:
       recruitment:
         title: タイトル
@@ -30,3 +31,7 @@ ja:
         start_time: 予定開始日時
         play_time: 予定プレイ時間
         game_master: ゲームマスター
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        icon: プロフィール画像

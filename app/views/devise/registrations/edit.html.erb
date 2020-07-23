@@ -1,51 +1,44 @@
   <div class="container">
-  <h2><%= resource_name.to_s.humanize %>の編集</h2>
+    <div class="row">
+      <div class="col">
+        <h2>アカウントの編集</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+          <div class="field">
+            <%= f.label User.human_attribute_name("name") %><br />
+            <%= f.text_field :name, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label User.human_attribute_name("email") %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label User.human_attribute_name("icon") %><br />
+            <%= f.file_field :icon %>
+            <%= f.hidden_field :icon_cache %>
+          </div>
+
+
+          <div class="actions">
+            <%= f.submit "編集", class: "btn btn-outline-dark mt-3"%>
+          </div>
+        <% end %>
+      </div>
+      <div class="col">
+        <h3 class="mt-3">アカウントの削除</h3>
+
+        <p><%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-outline-danger" %></p>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :icon %><br />
-      <%= f.file_field :icon %>
-      <%= f.hidden_field :icon_cache %>
-    </div>
-
-    <hr>
-
-    <div class="field mt-3">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update", class: "btn btn-outline-dark mt-3"%>
-    </div>
-  <% end %>
-
   <hr>
 
-  <h3 class="mt-3">アカウントの削除</h3>
-
-  <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
-
-  <%= link_to "Back", :back, class: "btn btn-outline-dark" %>
+  <%= link_to "戻る", :back, class: "btn btn-outline-dark" %>
 </div>
