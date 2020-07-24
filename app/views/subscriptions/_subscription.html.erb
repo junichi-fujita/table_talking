@@ -3,7 +3,6 @@
     <th>ユーザー名</th>
     <th>コメント</th>
     <th></th>
-    <th></th>
   </tr>
   <% recruitments.each do |recruitment| %>
     <% if action_name == "create" || action_name == "update" %>
@@ -17,8 +16,8 @@
           <td><%= pm.user.name %></td>
           <td><%= pm.comment %></td>
           <% if current_user.id == pm.user_id%>
-            <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm), remote: true, class: "btn btn-outline-dark" %></td>
-            <td><%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, data: { confirm: "本当に応募を取り消しますか？" }, class: "btn btn-outline-danger" %></td>
+            <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm), remote: true, class: "btn btn-outline-dark mr-1" %>
+            <%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, data: { confirm: "本当に応募を取り消しますか？" }, class: "btn btn-outline-danger" %></td>
           <% end %>
           <% if game_master? %>
             <% if pm.acceptance == false %>
