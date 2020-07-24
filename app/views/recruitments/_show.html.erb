@@ -1,4 +1,6 @@
-<table class="table mt-3">
+<div class="border p-4 rounded mt-3">
+<table class="table">
+
   <tr>
     <th><%= Recruitment.human_attribute_name("title") %></th>
     <td><%= recruitment.title %></td>
@@ -24,6 +26,7 @@
     <td><%= recruitment.master_name %></td>
   </tr>
 </table>
+</div>
 
 <div id="subscription-area">
   <%= render "subscriptions/subscription", recruitments: @recruitments %>
