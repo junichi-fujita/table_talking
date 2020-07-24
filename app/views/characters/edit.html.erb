@@ -1,5 +1,9 @@
 <div class="container">
+
   <% if current_user.id == @character.user_id%>
+
+    <%= render "shared/errors", obj: @character %>
+    
     <h1>キャラクターの編集</h1>
     <%= form_with(model: @character, local: true) do |form| %>
       <%= render "form", form: form %>

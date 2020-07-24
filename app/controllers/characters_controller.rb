@@ -43,6 +43,8 @@ class CharactersController < ApplicationController
     )
     if @character.save
       redirect_to @character, notice: "キャラクターを編集しました"
+    else
+      render :edit
     end
   end
 

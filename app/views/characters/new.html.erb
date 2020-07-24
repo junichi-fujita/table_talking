@@ -1,6 +1,8 @@
 <div class="container">
   <h1>キャラクターの作成</h1>
 
+  <%= render "shared/errors", obj: @character %>
+
   <%= form_with(model: @character, local: true) do |form| %>
     <%= render "form", form: form %>
     <%= form.submit class: "btn btn-outline-dark" %>
