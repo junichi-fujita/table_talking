@@ -5,7 +5,7 @@
     <%= form_with(model: @character, local: true) do |form| %>
       <%= render "form", form: form %>
       <%= form.submit class: "btn btn-outline-dark" %>
-      <%= link_to "　戻る　", :back, class: "btn btn-outline-dark" %>
+      <%= link_to "　戻る　", user_path(current_user) , class: "btn btn-outline-dark" %>
     <% end %>
   <% end %>
 </div>
