@@ -1,0 +1,6 @@
+$("text_field").val("");
+$("text_area").val("");
+$("number_field").val("");
+$("datetime_field").val("");
+$("#recruitment-modal").modal("hide");
+$("#show-area").html("<%= j(render 'show', { recruitment: @recruitment, recruitments: @recruitments }) %>")

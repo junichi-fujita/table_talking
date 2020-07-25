@@ -1,0 +1,45 @@
+<div class="border p-4 rounded mt-3">
+<table class="table">
+  <thead>
+    <h4 class="d-inline-block border border-primary rounded">イベントに応募しているプレイヤー一覧</h5>
+    <tr class="table-active">
+      <th>ユーザー名</th>
+      <th>コメント</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% recruitments.each do |recruitment| %>
+      <% if action_name == "create" || action_name == "update" %>
+        <% id = subscription.recruitment_id %>
+      <% else %>
+        <% id = params[:id] %>
+      <% end %>
+      <% if (id).to_i == (recruitment.participant_managements.first&.recruitment_id) %>
+        <%# pm = recruitment.participant_managements.last %>
+        <%#= binding.pry %>
+        <% recruitment.participant_managements.each do |pm| %>
+          <tr>
+            <td><%= pm.user.name %></td>
+            <td><%= pm.comment %></td>
+            <% if current_user.id == pm.user_id%>
+              <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm), remote: true, class: "btn btn-outline-dark mr-1" %>
+                <%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, data: { confirm: "本当に応募を取り消しますか？" }, class: "btn btn-outline-danger" %></td>
+          
+            <% elsif game_master? %>
+              <% if pm.acceptance == false %>
+                <td><%= link_to "承認", accept_recruitment_participant_management_path(recruitment, pm), method: :patch, class: "btn btn-outline-dark" %></td>
+              <% else %>
+                <td><%= link_to "承認取消", reject_recruitment_participant_management_path(recruitment, pm), method: :patch, class: "btn btn-outline-danger" %></td>
+              <% end %>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= link_to "戻る", :back, class: "btn btn-outline-dark" %>

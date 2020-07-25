@@ -1,27 +1,28 @@
-<h1>プレイのマッチング</h1>
+<div class="container">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>募集名</th>
-      <th>適正レベル</th>
-      <th>開始時間</th>
-      <th>予定プレイ時間</th>
-      <th>募集主</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recruitments.each do |recruitment| %>
-      <tr>
-        <td><%= recruitment.title  %></td>
-        <td><%= recruitment.appropriate_level %></td>
-        <td><%= recruitment.start_time %></td>
-        <td><%= recruitment.play_time %></td>
-        <td><%= recruitment.master_name %></td>
-        <td><%= link_to "詳細", recruitment_path(recruitment) %></td>
-      </tr>
+  <div class="d-flex justify-content-end">
+    <%= search_form_for @q do |form| %>
+      <div class="form-group form-inline">
+        <div>
+          <%= form.search_field :title_cont, class: "form-control" %>
+          <%= form.submit class: "btn btn-outline-dark from-control" %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
+  </div>
+  <div class="d-flex justify-content-end">
+    <%= link_to "イベントの作成", new_recruitment_path, remote: true, class: "btn btn-outline-dark mb-3" %>
+  </div>
 
-</table>
+  <div id="recruitment-modal" class="modal fade"></div>
+  <div id="comments_area">
+    <%= render "rec", recruitments: @recruitments %>
+  </div>
+
+  <div class="mb-3">
+    <%= paginate @recruitments %>
+  </div>
+</div>
+
+
+

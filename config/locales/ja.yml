@@ -9,3 +9,41 @@ ja:
         fighter: 戦士
         mage: 魔法使い
         thief: 盗賊
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"
+  activerecord:
+    models:
+      recruitment: 募集
+      user:
+      character:
+    attributes:
+      recruitment:
+        title: タイトル
+        content: 募集内容
+        appropriate_level: 適正レベル
+        start_time: 予定開始日時
+        play_time: 予定プレイ時間
+        game_master: ゲームマスター
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        icon: プロフィール画像
+      character:
+        name: 名前
+        race: 種族
+        job: 職業
+        level: レベル
+        experience: 経験値
+        strength: 筋力
+        intelligence: 知性
+        agility: 敏捷
+        money: 所持金
+        stock: 持ち物

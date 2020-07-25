@@ -1,19 +1,16 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
     <h1>マイアカウント</h1>
-
-    <%= link_to "アカウントの変更", edit_user_registration_path(current_user) %>
+    <%= link_to "アカウントの変更", edit_user_registration_path(current_user), class: "btn btn-outline-dark" %>
   </div>
   <div class="d-flex justify-content-end">
     <%#= binding.pry %>
     <% if @user.characters.last&.user_id %>
-      <%= link_to "キャラクター情報の詳細", character_path(id: @user.characters.last.id) %>
+      <%= link_to "キャラクター情報の詳細", character_path(id: @user.characters.last.id), class: "btn btn-outline-dark mb-3" %>
     <% else %>
-      <%= link_to "キャラクターの新規作成", new_character_path %>
+      <%= link_to "キャラクターの新規作成", new_character_path, class: "btn btn-outline-dark mb-3" %>
     <% end %>
   </div>
-
-
   <table class="table table-hover">
     <tr>
       <th>プレイヤー名</th>
@@ -23,47 +20,67 @@
       <th>メールアドレス</th>
       <th><%= @user.email %></th>
     </tr>
+    <tr>
+      <th>プロフィール画像</th>
+      <th><%= image_tag @user.icon_url(:thumb) %></th>
+    </tr>
   </table>
-
-  <h3>募集に応募しているプレイヤー</h2>
-  <table class="table table-hover">
-    <% @recruitments.each do |recruitment| %>
-      <% if recruitment.master_name == current_user.name%>
-        <% recruitment.participant_managements.each do |pm|%>
-          <% if recruitment.id == pm.application %>
-            <tr>
-              <th>ユーザー名</th>
-              <th>コメント</th>
-            </tr>
-            <tr>
-              <td> <%= pm.user.name %></td>
-              <td><%= pm.comment %></td>
-            </tr>
-            <%#= binding.pry %>
+  <div class="border p-4 rounded">
+    <h4 class="d-inline-block border border-primary rounded">募集に応募しているプレイヤー</h4>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-active">
+          <th>ユーザー名</th>
+          <th>コメント</th>
+        </tr>
+      </thead>
+      <tbody id="sample">
+          <% @recruitments.each do |recruitment| %>
+            <% if recruitment.master_name == current_user.name%>
+              <% recruitment.participant_managements.each do |pm|%>
+                <tr>
+                  <td> <%= pm.user.name %></td>
+                  <td><%= pm.comment %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+      </tbody>
+    </table>
+    <div id="insert"></div>
+  </div>
+  <div class="border p-4 rounded mt-3">
+    <h4 class="d-inline-block border border-primary rounded">応募したイベント</h4>
+    <table class="table table-hover">
+      <tr class="table-active">
+        <th>イベント名</th>
+        <th>イベント内容</th>
+        <th>マスター名</th>
+      </tr>
+      <div>
+        <% @recruitments.each do |recruitment| %>
+          <% recruitment.participant_managements.each do |pm| %>
+            <% if current_user.id == pm.user_id %>
+              <tr>
+                <td><%= recruitment.title %></td>
+                <td><%= recruitment.content %></td>
+                <td><%= recruitment.master_name %></td>
+              </tr>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  </table>
-
-
-  <h3>応募したイベント</h2>
-  <table class="table table-hover">
-    <tr>
-      <th>イベント名</th>
-      <th>イベント内容</th>
-      <th>マスター名</th>
-    </tr>
-    <% @recruitments.each do |recruitment| %>
-      <% recruitment.participant_managements.each do |pm| %>
-        <% if current_user.id == pm.user_id %>
-          <tr>
-            <td><%= recruitment.title %></td>
-            <td><%= recruitment.content %></td>
-            <td><%= recruitment.master_name %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    <% end %>
-  </table>
+      </div>
+    </table>
+  </div>
+  <%= link_to "戻る", :back, class: "btn btn-outline-dark mt-3" %>
 </div>
+
+<script>
+    const x = document.querySelector("#sample");
+    const insert = document.getElementById("insert");
+    console.log($("tbody").has("td"))
+    const message = "<p><%= "#イベントを開催した場合、ここに応募したプレイヤーが表示されます。" %></p>";
+    if (!$("tbody").has("td")) {
+      insert.insertAdjacentHTML("afterend", message)
+    }
+</script>

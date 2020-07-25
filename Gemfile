@@ -19,6 +19,9 @@ gem 'bootstrap'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'mini_magick'
+gem 'carrierwave'
+
 
 #BackEnd
 gem 'jbuilder', '~> 2.5'
@@ -27,19 +30,31 @@ gem 'devise'
 gem 'ransack'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'valid_email2'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'launchy'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
   gem 'hirb-unicode'
+end
+
+group :test do
+  gem 'capybara', '~> 3.17'
+  gem 'webdrivers'
 end

@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+  before_action :authenticate_user! 
   before_action :set_character, only: %i[ show edit update destroy ]
 
   def show
@@ -20,7 +21,7 @@ class CharactersController < ApplicationController
     )
     @user = User.find(current_user.id)
     @character.user = @user
-    if @character.save!
+    if @character.save
       redirect_to @character, notice: "キャラクターを作成しました"
     else
       render :new
@@ -40,8 +41,10 @@ class CharactersController < ApplicationController
       defense: ((@character.strength + @character.agility) / 2).ceil,
       evasion: @character.agility
     )
-    if @character.save!
+    if @character.save
       redirect_to @character, notice: "キャラクターを編集しました"
+    else
+      render :edit
     end
   end
 
