@@ -23,6 +23,7 @@ ja:
     models:
       recruitment: 募集
       user:
+      character:
     attributes:
       recruitment:
         title: タイトル
@@ -35,3 +36,14 @@ ja:
         name: ユーザー名
         email: メールアドレス
         icon: プロフィール画像
+      character:
+        name: 名前
+        race: 種族
+        job: 職業
+        level: レベル
+        experience: 経験値
+        strength: 筋力
+        intelligence: 知性
+        agility: 敏捷
+        money: 所持金
+        stock: 持ち物
