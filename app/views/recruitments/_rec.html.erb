@@ -1,11 +1,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th>募集名</th>
-      <th>適正レベル</th>
-      <th>開始時間</th>
-      <th>予定プレイ時間</th>
-      <th>募集主</th>
+      <th><%= Recruitment.human_attribute_name("title") %></th>
+      <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
+      <th><%= Recruitment.human_attribute_name("start_time") %></th>
+      <th><%= Recruitment.human_attribute_name("play_time") %></th>
+      <th><%= Recruitment.human_attribute_name("game_master") %></th>
       <th></th>
     </tr>
   </thead>
@@ -13,9 +13,9 @@
     <tbody>
       <tr>
         <td><%= recruitment.title  %></td>
-        <td><%= recruitment.appropriate_level %></td>
+        <td><%= recruitment.appropriate_level %>レベル</td>
         <td><%= l recruitment.start_time, format: :short %></td>
-        <td><%= recruitment.play_time %></td>
+        <td><%= recruitment.play_time %>時間</td>
         <td><%= recruitment.master_name %></td>
         <td><%= link_to "詳細", recruitment_path(recruitment), class: "btn btn-outline-dark" %></td>
       </tr>
