@@ -5,7 +5,7 @@
   <div>
     <% if user_signed_in? %>
       <strong><%#= link_to current_user.name, pages_show_path %></strong>
-      <%= link_to 'イベント一覧' , recruitments_path %>
+      <%= link_to 'セッション一覧' , recruitments_path %>
       <%= link_to 'マイアカウント', user_path(current_user), class: "ml-2" %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "ml-2" %>
     <% else %>
