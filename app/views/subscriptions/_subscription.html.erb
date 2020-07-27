@@ -1,7 +1,7 @@
 <div class="border p-4 rounded mt-3">
 <table class="table">
   <thead>
-    <h4 class="d-inline-block border border-primary rounded">イベントに応募しているプレイヤー一覧</h5>
+    <h4 class="d-inline-block border border-primary rounded">セッションに応募しているプレイヤー一覧</h5>
     <tr class="table-active">
       <th>ユーザー名</th>
       <th>コメント</th>
@@ -10,14 +10,12 @@
   </thead>
   <tbody>
     <% recruitments.each do |recruitment| %>
-      <% if action_name == "create" || action_name == "update" %>
+      <% if action_name == "create" || (action_name == "update" && controller_name == "subscriptions") %>
         <% id = subscription.recruitment_id %>
       <% else %>
         <% id = params[:id] %>
       <% end %>
       <% if (id).to_i == (recruitment.participant_managements.first&.recruitment_id) %>
-        <%# pm = recruitment.participant_managements.last %>
-        <%#= binding.pry %>
         <% recruitment.participant_managements.each do |pm| %>
           <tr>
             <td><%= pm.user.name %></td>

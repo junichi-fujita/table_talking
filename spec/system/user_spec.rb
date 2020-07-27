@@ -6,22 +6,23 @@ RSpec.describe 'Users', type: :system do
   end
   example "ログインする" do
     visit root_path
-    click_link "ログイン"
+    click_link "ログイン", match: :first
     fill_in "メールアドレス", with: @user.email
     fill_in "パスワード", with: @user.password
     click_button "ログイン"
     
-    expect(page).to have_content "ログインしました"
+    expect(page).to have_content "セッションの作成"
   end
   example "新規登録" do
     visit root_path
-    click_link "新規登録"
-    fill_in "ユーザー名", with: "sample"
-    fill_in "メールアドレス", with: "sample@example.com"
+    click_on "新規登録", match: :first
+    sleep 0.5
+    fill_in "name", with: "sample"
+    fill_in "email", with: "sample@example.com"
     fill_in "パスワード", with: "aaaaaa"
     fill_in "確認用パスワード", with: "aaaaaa"
     click_button "登録"
 
-    expect(page).to have_content "アカウント登録が完了しました。"
+    expect(page).to have_content "マイアカウント"
   end
 end

@@ -1,34 +1,32 @@
 <div class="border p-4 rounded mt-3">
-<h4 class="d-inline-block border border-primary rounded">イベントの詳細</h4>
-<table class="table">
-
-  <tr>
-    <th><%= Recruitment.human_attribute_name("title") %></th>
-    <td><%= recruitment.title %></td>
-  </tr>
-  <tr>
-    <th><%= Recruitment.human_attribute_name("content") %></th>
-    <td><%= recruitment.content %></td>
-  </tr>
-  <tr>
-    <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
-    <td><%= recruitment.appropriate_level %></td>
-  </tr>
-  <tr>
-    <th><%= Recruitment.human_attribute_name("start_time") %></th>
-    <td><%= l recruitment.start_time, format: :short %></td>
-  </tr>
-  <tr>
-    <th><%= Recruitment.human_attribute_name("play_time") %></th>
-    <td><%= recruitment.play_time %></td>
-  </tr>
-  <tr>
-    <th><%= Recruitment.human_attribute_name("game_master") %></th>
-    <td><%= recruitment.master_name %></td>
-  </tr>
-</table>
+  <h4 class="d-inline-block border border-primary rounded">セッションの詳細</h4>
+  <table class="table">
+    <tr>
+      <th><%= Recruitment.human_attribute_name("title") %></th>
+      <td><%= recruitment.title %></td>
+    </tr>
+    <tr>
+      <th><%= Recruitment.human_attribute_name("content") %></th>
+      <td><%= recruitment.content %></td>
+    </tr>
+    <tr>
+      <th><%= Recruitment.human_attribute_name("appropriate_level") %></th>
+      <td><%= recruitment.appropriate_level %>レベル</td>
+    </tr>
+    <tr>
+      <th><%= Recruitment.human_attribute_name("start_time") %></th>
+      <td><%= l recruitment.start_time, format: :short %></td>
+    </tr>
+    <tr>
+      <th><%= Recruitment.human_attribute_name("play_time") %></th>
+      <td><%= recruitment.play_time %>時間</td>
+    </tr>
+    <tr>
+      <th><%= Recruitment.human_attribute_name("game_master") %></th>
+      <td><%= recruitment.master_name %></td>
+    </tr>
+  </table>
 </div>
-
 <div id="subscription-area">
   <%= render "subscriptions/subscription", recruitments: @recruitments %>
 </div>

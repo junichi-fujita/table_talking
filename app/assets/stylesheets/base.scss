@@ -10,3 +10,23 @@ div.field_with_errors {
   background-color: #fcc;
   padding: 2px;
 }
+
+p {
+  font-family: 'NotoSansJP+RoundedMPlus1c';
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient( #dcffb8, #9ad4fc)
+}
+
+.container {
+  margin: 64px auto 0 auto;
+  padding: 32px;
+  max-width: 800;
+  border-radius: 16px;
+  background: rgba($color: #ffffff, $alpha: 0.6);
+}

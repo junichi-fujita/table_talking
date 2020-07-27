@@ -1,0 +1,32 @@
+.character_sheet, .dice, .pen {
+  width: 200px;
+}
+
+.line {
+  width: 100%;
+  vertical-align: top;
+}
+
+.p1 {
+  font-size: 20px;
+  background: rgba($color: #ffffff, $alpha: 0.9);
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.p2 {
+  font-size: 20px;
+  background: rgba($color: #ffffff, $alpha: 0.9);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.trpg_people {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.annotation {
+  font-size: 14px;
+}
