@@ -6,12 +6,12 @@
     <div class="form-group">
       <div class="field">
         <%= f.label User.human_attribute_name("name") %><br />
-        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control", id: "name" %>
       </div>
 
       <div class="field">
         <%= f.label User.human_attribute_name("email") %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "email" %>
       </div>
 
       <div class="field">
