@@ -26,9 +26,11 @@
 
   <%= image_tag "trpg_people", class: "trpg_people" %>
 
-  <div class="d-flex justify-content-center">
-    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-info rounded-0 w-25 btn-lg" %>
-    <%= link_to 'ログイン', new_user_session_path, class: "log_in ml-3 btn btn-info rounded-0 w-25 btn-lg"%>
-  </div>
+  <% unless user_signed_in? %>
+    <div class="d-flex justify-content-center">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-info rounded-0 w-25 btn-lg" %>
+      <%= link_to 'ログイン', new_user_session_path, class: "log_in ml-3 btn btn-info rounded-0 w-25 btn-lg"%>
+    </div>
+  <% end %>
 
 </div>
