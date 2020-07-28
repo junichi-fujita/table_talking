@@ -32,6 +32,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'valid_email2'
 gem 'rails-i18n'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
