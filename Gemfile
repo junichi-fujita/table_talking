@@ -21,6 +21,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'data-confirm-modal'
 
 
 #BackEnd
