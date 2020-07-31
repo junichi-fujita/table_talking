@@ -22,7 +22,7 @@
             <td><%= pm.comment %></td>
             <% if current_user.id == pm.user_id%>
               <td><%= link_to "編集", edit_recruitment_participant_management_path(recruitment, pm), remote: true, class: "btn btn-outline-dark mr-1" %>
-                <%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, data: { confirm: "本当に応募を取り消しますか？" }, class: "btn btn-outline-danger" %></td>
+                <%= link_to "応募の取消", recruitment_participant_management_path(recruitment, pm), method: :delete, data: { confirm: "本当に応募を取り消しますか？" , cancel: "やめる", commit: "削除" }, title: "削除の確認", class: "btn btn-outline-danger" %></td>
           
             <% elsif game_master? %>
               <% if pm.acceptance == false %>
