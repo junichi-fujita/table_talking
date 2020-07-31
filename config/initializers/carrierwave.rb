@@ -19,6 +19,6 @@ CarrierWave.configure do |config|
       config.asset_host = 'https://tabletalking-production.s3-ap-northeast-1.amazonaws.com'
     when 'development'
       config.fog_directory = 'tabletalking-development'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/tabletalking-development'
+      config.asset_host = 'https://tabletalking-development.s3-ap-northeast-1.amazonaws.com'
   end
 end
