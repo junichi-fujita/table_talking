@@ -16,7 +16,7 @@ CarrierWave.configure do |config|
   case Rails.env
     when 'production'
       config.fog_directory = 'tabletalking-production'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/tabletalking-production'
+      config.asset_host = 'https://tabletalking-production.s3-ap-northeast-1.amazonaws.com'
     when 'development'
       config.fog_directory = 'tabletalking-development'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/tabletalking-development'
