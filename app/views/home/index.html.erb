@@ -12,8 +12,8 @@
   </div>
   <div class="d-flex justify-content-around">
     <%= image_tag "dice", class: "dice" %>
-    <%#= image_tag "pen", class: "pen" %>
-    <%#= image_tag "character_sheet", class: "character_sheet" %>
+    <%= image_tag "pen", class: "pen" %>
+    <%= image_tag "character_sheet", class: "character_sheet" %>
   </div>
 
   <div class="mt-5">
@@ -24,7 +24,7 @@
     <p class="p2">サイコロ、鉛筆、紙をつかって、ルールブックにもとづき、ゲームマスター（司会進行役）とプレイヤー（自分のキャラクターを演じる役）が、ゲームマスターが用意したシナリオをもとに談話形式でロールプレイングゲームを行うものです。</p>
   </div>
 
-  <%#= image_tag "trpg_people", class: "trpg_people" %>
+  <%= image_tag "trpg_people", class: "trpg_people" %>
 
   <% unless user_signed_in? %>
     <div class="d-flex justify-content-center">
