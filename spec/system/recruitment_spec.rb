@@ -25,8 +25,8 @@ RSpec.describe 'Recruitment', type: :system do
     fill_in "セッション名", with: "初めてのTRPG"
     fill_in "詳細内容", with: "一緒にTRGを始めませんか？"
     fill_in "適正レベル", with: 1
-    select_date('2020,8月,1,', from: "予定開始時間")
-    select_time('00','00', from: "予定開始時間")
+    # select_date('2020,8月,1,', from: "予定開始時間")
+    # select_time('00','00', from: "予定開始時間")
     fill_in "予定プレイ時間", with: 2
     click_button "登録する"
     expect(page).to have_content("初めてのTRPG")
