@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'data-confirm-modal'
+gem 'webpacker'
 
 
 #BackEnd
