@@ -1,16 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2020_07_31_111122) do
+ActiveRecord::Schema.define(version: 2020_08_11_015943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +48,16 @@ ActiveRecord::Schema.define(version: 2020_07_31_111122) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "play_room_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_room_id"], name: "index_chats_on_play_room_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
   create_table "participant_managements", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "recruitment_id", null: false
@@ -72,6 +70,12 @@ ActiveRecord::Schema.define(version: 2020_07_31_111122) do
     t.index ["user_id"], name: "index_participant_managements_on_user_id"
   end
 
+  create_table "play_rooms", force: :cascade do |t|
+    t.string "room_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recruitments", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -81,6 +85,15 @@ ActiveRecord::Schema.define(version: 2020_07_31_111122) do
     t.integer "play_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "play_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_room_id"], name: "index_user_rooms_on_play_room_id"
+    t.index ["user_id"], name: "index_user_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,4 +111,8 @@ ActiveRecord::Schema.define(version: 2020_07_31_111122) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chats", "play_rooms"
+  add_foreign_key "chats", "users"
+  add_foreign_key "user_rooms", "play_rooms"
+  add_foreign_key "user_rooms", "users"
 end

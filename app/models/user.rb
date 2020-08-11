@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :participant_managements, dependent: :destroy
   has_many :recruitments, through: :participant_managements
   has_many :characters, dependent: :destroy
+  has_many :play_rooms, through: :user_rooms
+  has_many :chats
 
   validates :email, presence: true, "valid_email_2/email": true, uniqueness: true
   validates :name, presence: true, length: { maximum: 30 }
