@@ -1,0 +1,4 @@
+<div class="chat" id="chat-<%= chat.id %>">
+  <p><%= chat.user.name %>: <%= l chat.created_at, format: '%Y年%-m月%-d日(%a) %H:%M' %></p>
+  <%= simple_format(h chat.content) %>
+</div>

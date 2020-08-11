@@ -1,6 +1,7 @@
 class PlayRoomsController < ApplicationController
 
-  def chat
-    
+  def show
+    @chats = Chat.includes(:user).order(:id)
+    @chat = current_user.chats.build    
   end
 end
