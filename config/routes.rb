@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :characters
-  resources :play_rooms
-  resources :chats, only: :create
-  get "/play_room", to: "play_rooms#show"
+  resources :play_rooms do
+    resources :chats, only: :create
+  end
 end

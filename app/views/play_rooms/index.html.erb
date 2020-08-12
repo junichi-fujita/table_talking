@@ -1,0 +1,3 @@
+<% @play_rooms.each do |play_room| %>
+  <%= link_to play_room.room_name, play_room_path(play_room) %>
+<% end %>

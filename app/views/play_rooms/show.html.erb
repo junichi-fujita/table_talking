@@ -2,9 +2,9 @@
   <%= render @chats %>
 </div>
 
-<%= form_with model: @chat do |f| %>
+<%= form_with model: [@play_room, @chat] do |f| %>
   <div class="form-group">
-    <%= text_area :content, class: "form-control", row: "1", maxlength: "500" %>
+    <%= f.text_area :content, class: "form-control", row: "1", maxlength: "500" %>
   </div>
   <div class="form-group">
     <%= f.submit "送信", class: "btn btn-primary btn-block", id: "chat-button" %>
