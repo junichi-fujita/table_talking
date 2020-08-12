@@ -1,4 +1,4 @@
-<div id="chat-container">
+<div id="message-container">
   <%= render @chats %>
 </div>
 
@@ -7,6 +7,6 @@
     <%= f.text_area :content, class: "form-control", row: "1", maxlength: "500" %>
   </div>
   <div class="form-group">
-    <%= f.submit "送信", class: "btn btn-primary btn-block", id: "chat-button" %>
+    <%= f.submit "送信", class: "btn btn-primary btn-block", id: "message-button" %>
   </div>
 <% end %>

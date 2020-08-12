@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :play_rooms do
     resources :chats, only: :create
   end
+  mount ActionCable.server => '/cable'
 end

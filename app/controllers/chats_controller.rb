@@ -3,6 +3,9 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.build(chat_params)
     @chat.assign_attributes(play_room_id: params[:play_room_id])
     @chat.save
+    # room.jsのRoomChannelに送るための設定
+    ActionCable.server.broadcast "room_channel", message: @chat.template
+    # ActionCable.server.broadcast 'room_channel'
    
   end
 
