@@ -6,8 +6,10 @@ document.addEventListener('turbolinks:load', () => {
   if (messageContainer === null) {
     return;
   }
-  
+
+  // App.room = App.cable.subscriptions.create("RoomChannel", {
   App.room = App.cable.subscriptions.create("RoomChannel", {
+    play_room_id: $('#room').data('room_id'),
     connected: function () {
       // サブスクリプションがサーバーで使用できるようになったときに呼び出されます
     },
@@ -18,7 +20,6 @@ document.addEventListener('turbolinks:load', () => {
 
     received: function (data) {
       // このチャネルのWebSocketに着信データがあるときに呼び出されます
-      console.log(data);
       messageContainer.insertAdjacentHTML('beforeend', data['message']);
     }
   });

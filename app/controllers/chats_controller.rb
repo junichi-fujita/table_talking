@@ -5,8 +5,6 @@ class ChatsController < ApplicationController
     @chat.save
     # room.jsのRoomChannelに送るための設定
     ActionCable.server.broadcast "room_channel", message: @chat.template
-    # ActionCable.server.broadcast 'room_channel'
-   
   end
 
   private
